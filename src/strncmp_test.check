@@ -1,0 +1,120 @@
+#suite strncmp_test
+
+#test strncmp_test_0
+  char *str1 = "\0Hello HamleT!";
+  char *str2 = "\0Hello HamleT!";
+  char *str3 = "Hello HamleT!";
+  char *str4 = "Hello HamleT!";
+  char *str5 = "123dom7890";
+  char *str6 = "123dom789O";
+  char *str7 = "123dom7890";
+  char *str8 = "123dom789O";
+
+  ck_assert((strncmp(str1, str2, 100) > 0 && s21_strncmp(str1, str2, 100) > 0) ||
+            (strncmp(str1, str2, 100) < 0 && s21_strncmp(str1, str2, 100) < 0) ||
+            (strncmp(str1, str2, 100) == 0 && s21_strncmp(str1, str2, 100) == 0)
+  );
+  ck_assert((strncmp(str3, str4, 100) > 0 && s21_strncmp(str3, str4, 100) > 0) ||
+            (strncmp(str3, str4, 100) < 0 && s21_strncmp(str3, str4, 100) < 0) ||
+            (strncmp(str3, str4, 100) == 0 && s21_strncmp(str3, str4, 100) == 0)
+  );
+  ck_assert((strncmp(str5, str6, 10) > 0 && s21_strncmp(str5, str6, 10) > 0) ||
+            (strncmp(str5, str6, 10) < 0 && s21_strncmp(str5, str6, 10) < 0) ||
+            (strncmp(str5, str6, 10) == 0 && s21_strncmp(str5, str6, 10) == 0)
+  );
+  ck_assert((strncmp(str7, str8, 1) > 0 && s21_strncmp(str7, str8, 1) > 0) ||
+            (strncmp(str7, str8, 1) < 0 && s21_strncmp(str7, str8, 1) < 0) ||
+            (strncmp(str7, str8, 1) == 0 && s21_strncmp(str7, str8, 1) == 0)
+  );
+  ck_assert((strncmp("1", "1", 100) > 0 && s21_strncmp("1", "1", 100) > 0) ||
+            (strncmp("1", "1", 100) < 0 && s21_strncmp("1", "1", 100) < 0) ||
+            (strncmp("1", "1", 100) == 0 && s21_strncmp("1", "1", 100) == 0)
+  );
+  ck_assert((strncmp("1h", "1h", 10) > 0 && s21_strncmp("1h", "1h", 10) > 0) ||
+            (strncmp("1h", "1h", 10) < 0 && s21_strncmp("1h", "1h", 10) < 0) ||
+            (strncmp("1h", "1h", 10) == 0 && s21_strncmp("1h", "1h", 10) == 0)
+  );
+  ck_assert((strncmp("1h", "1h", 1) > 0 && s21_strncmp("1h", "1h", 1) > 0) ||
+            (strncmp("1h", "1h", 1) < 0 && s21_strncmp("1h", "1h", 1) < 0) ||
+            (strncmp("1h", "1h", 1) == 0 && s21_strncmp("1h", "1h", 1) == 0)
+  );
+
+#test strncmp_test_1
+  const char* t1 = "string_test num 1";
+  const char* T1 = "string_test num 1";
+  ck_assert((strncmp(t1, T1, 8) > 0 && s21_strncmp(t1, T1, 8) > 0) ||
+            (strncmp(t1, T1, 8) < 0 && s21_strncmp(t1, T1, 8) < 0) ||
+            (strncmp(t1, T1, 8) == 0 && s21_strncmp(t1, T1, 8) == 0)
+  );
+
+#test strncmp_test_2
+  const char* t2 = "string_test num 2";
+  const char* T2 = "qewqwewqe";
+  ck_assert((strncmp(t2, T2, 8) > 0 && s21_strncmp(t2, T2, 8) > 0) ||
+            (strncmp(t2, T2, 8) < 0 && s21_strncmp(t2, T2, 8) < 0) ||
+            (strncmp(t2, T2, 8) == 0 && s21_strncmp(t2, T2, 8) == 0)
+  );
+
+#test strncmp_test_3
+  const char* t3 = "string_test num 3";
+  const char* T3 = "string_test num 3";
+  ck_assert((strncmp(t3, T3, 8) > 0 && s21_strncmp(t3, T3, 8) > 0) ||
+            (strncmp(t3, T3, 8) < 0 && s21_strncmp(t3, T3, 8) < 0) ||
+            (strncmp(t3, T3, 8) == 0 && s21_strncmp(t3, T3, 8) == 0)
+  );
+
+#test strncmp_test_4
+  const char* t4 = "string_test num 4";
+  const char* T4 = "String_test num 4";
+  ck_assert((strncmp(t4, T4, 8) > 0 && s21_strncmp(t4, T4, 8) > 0) ||
+            (strncmp(t4, T4, 8) < 0 && s21_strncmp(t4, T4, 8) < 0) ||
+            (strncmp(t4, T4, 8) == 0 && s21_strncmp(t4, T4, 8) == 0)
+  );
+
+#test strncmp_test_5
+  const char* t5 = "stringuest num 5";
+  const char* T5 = "string_test num 5";
+  ck_assert((strncmp(t5, T5, 8) > 0 && s21_strncmp(t5, T5, 8) > 0) ||
+            (strncmp(t5, T5, 8) < 0 && s21_strncmp(t5, T5, 8) < 0) ||
+            (strncmp(t5, T5, 8) == 0 && s21_strncmp(t5, T5, 8) == 0)
+  );
+
+#test strncmp_test_6
+  const char* t6 = "string_test num 6";
+  const char* T6 = "stringtest num 6";
+  ck_assert((strncmp(t6, T6, 8) > 0 && s21_strncmp(t6, T6, 8) > 0) ||
+            (strncmp(t6, T6, 8) < 0 && s21_strncmp(t6, T6, 8) < 0) ||
+            (strncmp(t6, T6, 8) == 0 && s21_strncmp(t6, T6, 8) == 0)
+  );
+
+#test strncmp_test_7
+  const char* t7 = "stringtest num 7";
+  const char* T7 = "string_test num 7";
+  ck_assert((strncmp(t7, T7, 8) > 0 && s21_strncmp(t7, T7, 8) > 0) ||
+            (strncmp(t7, T7, 8) < 0 && s21_strncmp(t7, T7, 8) < 0) ||
+            (strncmp(t7, T7, 8) == 0 && s21_strncmp(t7, T7, 8) == 0)
+  );
+
+#test strncmp_test_8
+  const char* t8 = "string_test num 8";
+  const char* T8 = "stringtest num 8";
+  ck_assert((strncmp(t8, T8, 8) > 0 && s21_strncmp(t8, T8, 8) > 0) ||
+            (strncmp(t8, T8, 8) < 0 && s21_strncmp(t8, T8, 8) < 0) ||
+            (strncmp(t8, T8, 8) == 0 && s21_strncmp(t8, T8, 8) == 0)
+  );
+
+#test strncmp_test_9
+  const char* t9 = "string_tes\0t num 9";
+  const char* T9 = "string_tes\0t num 9";
+  ck_assert((strncmp(t9, T9, 8) > 0 && s21_strncmp(t9, T9, 8) > 0) ||
+            (strncmp(t9, T9, 8) < 0 && s21_strncmp(t9, T9, 8) < 0) ||
+            (strncmp(t9, T9, 8) == 0 && s21_strncmp(t9, T9, 8) == 0)
+  );
+
+#test strncmp_test_10
+  const char* t10 = "string_tes\0t num 9";
+  const char* T10 = "string_tes\0t num 9";
+  ck_assert((strncmp(t10, T10, 0) > 0 && s21_strncmp(t10, T10, 0) > 0) ||
+            (strncmp(t10, T10, 0) < 0 && s21_strncmp(t10, T10, 0) < 0) ||
+            (strncmp(t10, T10, 0) == 0 && s21_strncmp(t10, T10, 0) == 0)
+  );

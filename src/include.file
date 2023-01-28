@@ -1,0 +1,7 @@
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "s21_string.h"
+#include <limits.h>
+
+#define BUFFSIZE 400

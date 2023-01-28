@@ -1,0 +1,117 @@
+#suite s21_sprintf_tests_s
+
+#test test_s1
+char a[50] = "Hello";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%s", a), sprintf(resorig, "%s", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s2
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%.2s%.2s", a, b), sprintf(resorig, "%.2s%.2s", a, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s3
+char a[50] = "Hello";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%s", &a[1]), sprintf(resorig, "%s", &a[1]));
+ck_assert_pstr_eq(res, resorig);
+
+
+#test test_s4
+char a[50] = "Hello";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%s", &a[s21_strlen(a) - 1]), sprintf(resorig, "%s", &a[s21_strlen(a) - 1]));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s5
+char a[50] = "Hello";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%s", &a[s21_strlen(a)]), sprintf(resorig, "%s", &a[s21_strlen(a)]));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s6
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%.0s%.0s", a, b), sprintf(resorig, "%.0s%.0s", a, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s7
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%.*s%.*s", 0, a, 2, b), sprintf(resorig, "%.*s%.*s", 0, a, 2, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s8
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%1s%1s", a, b), sprintf(resorig, "%1s%1s",a, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s9
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%*s%1s", 7, a, b), sprintf(resorig, "%*s%1s", 7, a, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s10
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%-115s%-10s", a, b), sprintf(resorig, "%-115s%-10s", a, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s11
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%11s" "hello, i'm here! %-10s", a, b), sprintf(resorig, "%11s" "hello, i'm here! %-10s", a, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s12
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%7.3s" "Hi " "hello, i'm here %-10s", a, b), sprintf(resorig, "%7.3s" "Hi " "hello, i'm here %-10s", a, b));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s13
+char a[50] = "Hello";
+char b[50] = " again";
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%11s" "hello, i'm here %-10s" "%s", a, b, "new_string"), sprintf(resorig, "%11s" "hello, i'm here %-10s" "%s", a, b, "new_string"));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s14
+char res[300];
+char resorig[300];
+char format[] = "hello %.15s it's me %15.8s";
+ck_assert_int_eq(s21_sprintf(res, format, "wegww", "dsg"), sprintf(resorig, format, "wegww", "dsg"));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_s15
+char res[300];
+char resorig[300];
+char format[] = "hello %.15s it's me %15.8s";
+ck_assert_int_eq(s21_sprintf(res, format, "wegww", "dsg"), sprintf(resorig, format, "wegww", "dsg"));
+ck_assert_pstr_eq(res, resorig);
+

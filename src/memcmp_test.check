@@ -1,0 +1,73 @@
+#suite memcmp_test
+
+#test memcmp_test_1
+  const char* t1 = "string_test num 1";
+  const char* T1 = "string_test num 1";
+  ck_assert((memcmp(t1, T1, 8) > 0 && s21_memcmp(t1, T1, 8) > 0) ||
+            (memcmp(t1, T1, 8) < 0 && s21_memcmp(t1, T1, 8) < 0) ||
+            (memcmp(t1, T1, 8) == 0 && s21_memcmp(t1, T1, 8) == 0)
+  );
+
+#test memcmp_test_2
+  const char* t2 = "string_test num 2";
+  const char* T2 = "qewqwewqe";
+  ck_assert((memcmp(t2, T2, 8) > 0 && s21_memcmp(t2, T2, 8) > 0) ||
+            (memcmp(t2, T2, 8) < 0 && s21_memcmp(t2, T2, 8) < 0) ||
+            (memcmp(t2, T2, 8) == 0 && s21_memcmp(t2, T2, 8) == 0)
+  );
+
+#test memcmp_test_3
+  const char* t3 = "string_test num 3";
+  const char* T3 = "string_test num 3";
+  ck_assert((memcmp(t3, T3, 8) > 0 && s21_memcmp(t3, T3, 8) > 0) ||
+            (memcmp(t3, T3, 8) < 0 && s21_memcmp(t3, T3, 8) < 0) ||
+            (memcmp(t3, T3, 8) == 0 && s21_memcmp(t3, T3, 8) == 0)
+  );
+
+#test memcmp_test_4
+  const char* t4 = "string_test num 4";
+  const char* T4 = "string_test num 4";
+  ck_assert((memcmp(t4, T4, 8) > 0 && s21_memcmp(t4, T4, 8) > 0) ||
+            (memcmp(t4, T4, 8) < 0 && s21_memcmp(t4, T4, 8) < 0) ||
+            (memcmp(t4, T4, 8) == 0 && s21_memcmp(t4, T4, 8) == 0)
+  );
+
+#test memcmp_test_5
+  const char* t5 = "stringuest num 5";
+  const char* T5 = "string_test num 5";
+  ck_assert((memcmp(t5, T5, 8) > 0 && s21_memcmp(t5, T5, 8) > 0) ||
+            (memcmp(t5, T5, 8) < 0 && s21_memcmp(t5, T5, 8) < 0) ||
+            (memcmp(t5, T5, 8) == 0 && s21_memcmp(t5, T5, 8) == 0)
+  );
+
+#test memcmp_test_6
+  const char* t6 = "string_test num 6";
+  const char* T6 = "stringtest num 6";
+  ck_assert((memcmp(t6, T6, 8) > 0 && s21_memcmp(t6, T6, 8) > 0) ||
+            (memcmp(t6, T6, 8) < 0 && s21_memcmp(t6, T6, 8) < 0) ||
+            (memcmp(t6, T6, 8) == 0 && s21_memcmp(t6, T6, 8) == 0)
+  );
+
+#test memcmp_test_7
+  const char* t7 = "stringtest num 7";
+  const char* T7 = "string_test num 7";
+  ck_assert((memcmp(t7, T7, 8) > 0 && s21_memcmp(t7, T7, 8) > 0) ||
+            (memcmp(t7, T7, 8) < 0 && s21_memcmp(t7, T7, 8) < 0) ||
+            (memcmp(t7, T7, 8) == 0 && s21_memcmp(t7, T7, 8) == 0)
+  );
+
+#test memcmp_test_8
+  const char* t8 = "string_test num 8";
+  const char* T8 = "stringtest num 8";
+  ck_assert((memcmp(t8, T8, 8) > 0 && s21_memcmp(t8, T8, 8) > 0) ||
+            (memcmp(t8, T8, 8) < 0 && s21_memcmp(t8, T8, 8) < 0) ||
+            (memcmp(t8, T8, 8) == 0 && s21_memcmp(t8, T8, 8) == 0)
+  );
+
+#test memcmp_test_9
+  const char* t9 = "string_tes\0t num 9";
+  const char* T9 = "string_tes\0t num 9";
+  ck_assert((memcmp(t9, T9, 8) > 0 && s21_memcmp(t9, T9, 8) > 0) ||
+            (memcmp(t9, T9, 8) < 0 && s21_memcmp(t9, T9, 8) < 0) ||
+            (memcmp(t9, T9, 8) == 0 && s21_memcmp(t9, T9, 8) == 0)
+  );

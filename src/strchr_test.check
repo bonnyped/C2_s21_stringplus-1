@@ -1,0 +1,65 @@
+#suite strchr_test
+
+#test strchr_test_1
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c1 = 'O';
+  ck_assert_pstr_eq(strchr(t1, c1), s21_strchr(T1, c1));
+
+#test strchr_test_2
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c2 = 'o';
+  ck_assert_pstr_eq(strchr(t1, c2), s21_strchr(T1, c2));
+
+#test strchr_test_3
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c3 = 'O';
+  ck_assert_pstr_eq(strchr(t1, c3), s21_strchr(T1, c3));
+
+#test strchr_test_4
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c4 = 'O';
+  ck_assert_pstr_eq(strchr(t1, c4), s21_strchr(T1, c4));
+
+#test strchr_test_5
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c5 = 'o';
+  ck_assert_pstr_eq(strchr(t1, c5), s21_strchr(T1, c5));
+
+#test strchr_test_6
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c6 = 'H';
+  ck_assert_pstr_eq(strchr(t1, c6), s21_strchr(T1, c6));
+
+#test strchr_test_7
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c7 = 'H';
+  ck_assert_pstr_eq(strchr(t1, c7), s21_strchr(T1, c7));
+
+#test strchr_test_8
+  const char t1[] = "HELLO, WORLD!";
+  const char T1[] = "HELLO, WORLD!";
+  int c8 = 'h';
+  ck_assert_pstr_eq(strchr(t1, c8), s21_strchr(T1, c8));
+
+#test strchr_test_9
+  const char t1[] = "\0HELLO, WORLD!";
+  const char T1[] = "\0HELLO, WORLD!";
+  int c9 = 'H';
+  ck_assert_pstr_eq(strchr(t1, c9), s21_strchr(T1, c9));
+
+#test strchr_test_10
+  char s[] = "Hello, world!";
+  int ch = '\0';
+  ck_assert_pstr_eq(strchr(s, ch), s21_strchr(s, ch));
+
+#test strchr_test_11
+  char s2[] = "He\0llo, world!";
+  int ch2 = '\0';
+  ck_assert_pstr_eq(strchr(s2, ch2), s21_strchr(s2, ch2));

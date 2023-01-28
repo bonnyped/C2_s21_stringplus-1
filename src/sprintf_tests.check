@@ -1,0 +1,24 @@
+#suite sprintf_test
+
+#test float_test
+  float a = 2.42;
+  float d = 1.62;
+  float b = 0;
+  float c = a/b;
+  char res[200];
+  char resorig[200];
+  char format[] = "%0.0f %f % f %+ f";
+  s21_sprintf(res, format, d, a, b, c);
+  sprintf(resorig, format, d, a, b, c);
+  ck_assert_str_eq(res, resorig);
+  
+#test float_test2
+ float a = 0;
+ float b = 0;
+ float c = a/b;
+ char res[200];
+ char resorig[200];
+ char format[] = "%f % f %+ f";
+ s21_sprintf(res, format, a, b, c);
+ sprintf(resorig, format, a, b, c);
+ ck_assert_str_eq(res, resorig);

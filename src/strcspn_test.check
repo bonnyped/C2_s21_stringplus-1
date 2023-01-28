@@ -1,0 +1,25 @@
+#suite strcspn_test
+
+#test strcspn_test_1
+  char *str1 = "123456788990";
+  char *str2 = "t";
+
+  ck_assert_int_eq(strcspn(str1, str2), s21_strcspn(str1, str2));
+
+#test strcspn_test_2
+  char *str3 = "123456788990";
+  char *str4 = "99";
+
+  ck_assert_int_eq(strcspn(str3, str4), s21_strcspn(str3, str4));
+
+#test strcspn_test_3
+  char *str5 = "";
+  char *str6 = "1";
+
+  ck_assert_int_eq(strcspn(str5, str6), s21_strcspn(str5, str6));
+
+#test strcspn_test_4
+  char *str7 = "123456788990";
+  char *str8 = "12399";
+
+  ck_assert_int_eq(strcspn(str7, str8), s21_strcspn(str7, str8));

@@ -1,0 +1,46 @@
+#suite strcmp_test
+
+#test strcmp_test_1
+  const char str1[50] = "H\0Hello HamleT!";
+  const char str2[50] = "Hello Ham\0leT!";
+
+  ck_assert((strcmp(str1, str2) > 0 && s21_strcmp(str1, str2) > 0) ||
+            (strcmp(str1, str2) < 0 && s21_strcmp(str1, str2) < 0) ||
+            (strcmp(str1, str2) == 0 && s21_strcmp(str1, str2) == 0)
+  );
+
+#test strcmp_test_2
+  const char str3[50] = "Hello HamleT!";
+  const char str4[50] = "Hello HamleT! HELLO WORLD!";
+
+  ck_assert((strcmp(str3, str4) > 0 && s21_strcmp(str3, str4) > 0) ||
+            (strcmp(str3, str4) < 0 && s21_strcmp(str3, str4) < 0) ||
+            (strcmp(str3, str4) == 0 && s21_strcmp(str3, str4) == 0)
+  );
+
+#test strcmp_test_3
+  const char str5[50] = "123dom7890";
+  const char str6[50] = "123dom789O";
+
+  ck_assert((strcmp(str5, str6) > 0 && s21_strcmp(str5, str6) > 0) ||
+            (strcmp(str5, str6) < 0 && s21_strcmp(str5, str6) < 0) ||
+            (strcmp(str5, str6) == 0 && s21_strcmp(str5, str6) == 0)
+  );
+
+#test strcmp_test_4
+  const char str7[50] = "l23dom7890";
+  const char str8[50] = "123dom7890";
+
+  ck_assert((strcmp(str7, str8) > 0 && s21_strcmp(str7, str8) > 0) ||
+            (strcmp(str7, str8) < 0 && s21_strcmp(str7, str8) < 0) ||
+            (strcmp(str7, str8) == 0 && s21_strcmp(str7, str8) == 0)
+  );
+
+#test strcmp_test_7
+  const char str9[50] = "l23dom7890";
+  const char str10[50] = "123";
+
+  ck_assert((strcmp(str9, str10) > 0 && s21_strcmp(str9, str10) > 0) ||
+            (strcmp(str9, str10) < 0 && s21_strcmp(str9, str10) < 0) ||
+            (strcmp(str9, str10) == 0 && s21_strcmp(str9, str10) == 0)
+  );

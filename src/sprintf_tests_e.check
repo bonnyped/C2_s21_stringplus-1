@@ -1,0 +1,130 @@
+#suite s21_sprintf_tests_e
+
+#test test_e1
+double a = 777.0;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%e", a), sprintf(resorig, "%e", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e2
+float a = 777.0;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%0+9.5e", a), sprintf(resorig, "%0+9.5e", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e3
+double a = 777.0;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%.5e", a), sprintf(resorig, "%.5e", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e4
+float a = 777.0;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%5.5e", a), sprintf(resorig, "%5.5e", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e5
+double a = 100;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%.0e", a), sprintf(resorig, "%.0e", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e6
+long double a = 777.777;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%Le", a), sprintf(resorig, "%Le", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e7
+long double a = 777.777;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%3.4Le", a), sprintf(resorig, "%3.4Le", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e8
+long double a = 777;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%+2.0Le", a), sprintf(resorig, "%+2.0Le", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e9
+long double a = 777;
+char res[400];
+char resorig[400];
+ck_assert_int_eq(s21_sprintf(res, "%-300.0Le", a), sprintf(resorig, "%-300.0Le", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e10
+long double a = 777;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%- 2.0Le", a), sprintf(resorig, "%- 2.0Le", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e11
+long double a = -777;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%- 2.0Le", a), sprintf(resorig, "%- 2.0Le", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e12
+long double a = -777;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#- 2.0Le", a), sprintf(resorig, "%#- 2.0Le", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e13
+float a = 100;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#-+*.*e", 1, 2, a), sprintf(resorig, "%#-+*.*e", 1, 2, a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e14
+float a = 123.321;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+*.*e", 1, 1, a), sprintf(resorig, "%#+*.*e", 1, 1, a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e15
+float a = 123.321;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%*.3e", 1, a), sprintf(resorig, "%*.3e", 1, a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_e16
+double a = 123.321;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%*.e", 1, a), sprintf(resorig, "%*.e", 1, a));
+ck_assert_pstr_eq(res, resorig);
+
+#test s21_sprintf_e_17
+  char res[200];
+  char resorig[200];
+  char format[100] = "%e %.5e %.6e";
+  float a = 9999.999;
+  ck_assert_int_eq(sprintf(res, format,  a, a, a), s21_sprintf(resorig, format,  a, a, a));
+  ck_assert_str_eq(res, resorig);
+  
+#test s21_sprintf_e_18
+  char res[200];
+  char resorig[200];
+  char format[100] = "%e %.5e %.6e";
+  float a = 0.99999;
+  ck_assert_int_eq(sprintf(res, format,  a, a, a), s21_sprintf(resorig, format,  a, a, a));
+  ck_assert_str_eq(res, resorig);
+

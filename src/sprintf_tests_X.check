@@ -1,0 +1,117 @@
+#suite s21_sprintf_tests_X
+
+#test test_X1
+unsigned int a = 77;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%X", a), sprintf(resorig, "%X", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X2
+unsigned int a = 77;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%#X", a), sprintf(resorig, "%#X", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X3
+unsigned int a = UINT_MAX;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%#10X", a), sprintf(resorig, "%#10X", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X4
+unsigned int a = 77;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%#-10X", a), sprintf(resorig, "%#-10X", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X5
+unsigned int a = UINT_MAX;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%0#10X", a), sprintf(resorig, "%0#10X", a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X6
+unsigned int a = 77;
+unsigned int b = 7777;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%0#10X", b - a), sprintf(resorig, "%0#10X", b - a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X7
+unsigned int b = 7777;
+unsigned int g = 777777;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%010X", b + g), sprintf(resorig, "%010X", b + g));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X8
+unsigned int a = 77;
+unsigned int b = 7777;
+unsigned int g = 777777;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%015X", b + g - a), sprintf(resorig, "%015X", b + g - a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X9
+unsigned int a = 77;
+unsigned int b = 7777;
+unsigned int g = 777777;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%3X", b + g - a), sprintf(resorig, "%3X", b + g - a));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X10
+unsigned int a = 77;
+unsigned int b = 7777;
+unsigned int g = 777777;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%X - %x - %X", a, b, g), sprintf(resorig, "%X - %x - %X", a, b, g));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X11
+unsigned int a = 77;
+unsigned int b = 7777;
+unsigned int g = 777777;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%.15X - %X - %x", a, b, g), sprintf(resorig, "%.15X - %X - %x", a, b, g));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X12
+unsigned int a = 77;
+unsigned int b = 7777;
+unsigned int g = 777777;
+unsigned int c = 0;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%.3X %.0X", b + g - a, c * c), sprintf(resorig, "%.3X %.0X", b + g - a, c * c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X13
+unsigned int a = 77;
+long int h = 7;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%hX %-.100lX", a, h), sprintf(resorig, "%hX %-.100lX", a, h));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_X14
+unsigned int a = 77;
+unsigned int b = 7777;
+unsigned int g = 777777;
+short int e = 777;
+long int h = 7;
+char res[200];
+char resorig[200];
+ck_assert_int_eq(s21_sprintf(res, "%*X%*.*X%.*x%0hX %-.100lx", 13, a, 10, 12, b, 0, g, e, h), sprintf(resorig, "%*X%*.*X%.*x%0hX %-.100lx", 13, a, 10, 12, b, 0, g, e, h));
+ck_assert_pstr_eq(res, resorig);

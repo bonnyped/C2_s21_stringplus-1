@@ -1,0 +1,52 @@
+#suite strlen_test
+
+#test strlen_test_0
+  char *str = "Hello, this is 21 len";
+
+  ck_assert_int_eq(strlen(str), s21_strlen(str));
+
+#test strlen_test_1
+  char *str1 = "Hello Hamlet";
+
+  ck_assert_int_eq(strlen(str1), s21_strlen(str1));
+
+#test strlen_test_2
+  char *str2 = "Hello \0Hamlet";
+
+  ck_assert_int_eq(strlen(str2), s21_strlen(str2));
+
+#test strlen_test_3
+  char *str3 = "123456789";
+
+  ck_assert_int_eq(strlen(str3), s21_strlen(str3));
+
+#test strlen_test_4
+  char *str4 = "";
+
+  ck_assert_int_eq(strlen(str4), s21_strlen(str4));
+
+#test strlen_test_5
+  char *str5 = "Hello Hamlet!!!!";
+
+  ck_assert_int_eq(strlen(str5), s21_strlen(str5));
+
+#test strlen_test_6
+  char *str6 = "1";
+
+  ck_assert_int_eq(strlen(str6), s21_strlen(str6));
+
+#test strlen_test_7
+  char *str7 = "Hello HamletHello HamletHello HamletHello HamletHello "
+               "HamletHello HamletHello HamletHello HamletHello Hamlet";
+
+  ck_assert_int_eq(strlen(str7), s21_strlen(str7));
+
+#test strlen_test_8
+  char *str8 = "\0";
+
+  ck_assert_int_eq(strlen(str8), s21_strlen(str8));
+
+#test strlen_test_9
+  char *str9 = "123\0123";
+
+  ck_assert_int_eq(strlen(str9), s21_strlen(str9));

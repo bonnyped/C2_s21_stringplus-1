@@ -1,0 +1,130 @@
+#suite memmove_test
+
+#test memmove_test_1
+  const char* t1 = "string_test num 1";
+  char q1[100] = {'\0'};
+  char Q1[100] = {'\0'};
+  ck_assert_str_eq(memmove(q1, t1, 10), s21_memmove(Q1, t1, 10));
+
+#test memmove_test_2
+  const char* t2 = "str\0ing_test num 2";
+  char q2[100] = {'\0'};
+  char Q2[100] = {'\0'};
+  ck_assert_str_eq(memmove(q2, t2, 10), s21_memmove(Q2, t2, 10));
+
+#test memmove_test_3
+  const char* t3 = "str\0ing_test num 3";
+  char q3[100] = "STR\0ING_TEST NUM 3";
+  char Q3[100] = "STR\0ING_TEST NUM 3";
+  ck_assert_str_eq(memmove(q3 + 2, t3, 5), s21_memmove(Q3 + 2, t3, 5));
+
+#test memmove_test_4
+  const char* t4 = "str\0ing_test num 4";
+  char q4[100] = "STRING_TEST NUM 4";
+  char Q4[100] = "STRING_TEST NUM 4";
+  ck_assert_str_eq(memmove(q4 + 2, t4, 5), s21_memmove(Q4 + 2, t4, 5));
+
+#test memmove_test_5
+  const char* t5 = "string_test num 5";
+  char q5[100] = "STRING_TEST NUM 5";
+  char Q5[100] = "STRING_TEST NUM 5";
+  ck_assert_str_eq(memmove(q5 + 2, t5, 5), s21_memmove(Q5 + 2, t5, 5));
+
+#test memmove_test_6
+  char q6[] = "1234567890";
+  char Q6[] = "1234567890";
+  ck_assert_str_eq(memmove(q6 + 2, q6 + 1, 5), s21_memmove(Q6 + 2, Q6 + 1, 5));
+
+#test memmove_test_7
+  char q7[] = "1234567890";
+  char Q7[] = "1234567890";
+  ck_assert_str_eq(memmove(q7 + 4, q7, 5), s21_memmove(Q7 + 4, Q7, 5));
+
+#test memmove_1
+  char s1[] = "Hello, world!";
+  char s2[] = "Hello, world!";
+  char s3[] = "Good";
+  s21_size_t n = 4;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_2
+  char s1[] = "Hello, world!";
+  char s2[] = "Hello, world!";
+  char s3[] = "";
+  s21_size_t n = 0;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_3
+  char s1[] = "Hello, world!";
+  char s2[] = "Hello, world!";
+  char s3[] = "forward";
+  s21_size_t n = 0;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_4
+  char s1[] = "100: Checks: 780, Failures: 0, Errors: 0";
+  char s2[] = "100: Checks: 780, Failures: 0, Errors: 0";
+  s21_size_t n = 6;
+  memmove(s1, s1, n);
+  s21_memmove(s2, s2, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_5
+  char s1[] = "H";
+  char s2[] = "H";
+  char s3[] = "Hi";
+  s21_size_t n = 2;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_6
+  char s1[] = "jijijij";
+  char s2[] = "jijijij";
+  char s3[] = "\0";
+  s21_size_t n = 1;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_7
+  char s1[] = "           ";
+  char s2[] = "           ";
+  char s3[] = "new_string";
+  s21_size_t n = strlen(s3);
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_8
+  char s1[] = "699\017020";
+  char s2[] = "699\017020";
+  char s3[] = "com";
+  s21_size_t n = 3;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_9
+  char s1[] = "69917020";
+  char s2[] = "69917020";
+  char s3[] = "c";
+  s21_size_t n = 1;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);
+
+#test memmove_10
+  char s1[] = "69917020";
+  char s2[] = "69917020";
+  char s3[] = "com";
+  s21_size_t n = 4;
+  memmove(s1, s3, n);
+  s21_memmove(s2, s3, n);
+  ck_assert_mem_eq(s1, s2, n);

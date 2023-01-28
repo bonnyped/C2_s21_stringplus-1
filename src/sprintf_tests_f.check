@@ -1,0 +1,206 @@
+#suite sprintf_test_f
+
+#test s21_sprintf_f_1
+  char res[200];
+  char resorig[200];
+  char format[100] = "%f %12f %.3f";
+  float a = 1.123456789;
+  ck_assert_int_eq(sprintf(res, format, a, a, a), s21_sprintf(resorig, format, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_2
+  char res[200];
+  char resorig[200];
+  char format[100] = "%9f%.f%0f";
+  float a = 1.123456789;
+  ck_assert_int_eq(sprintf(res, format, a, a, a), s21_sprintf(resorig, format, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_3
+  char res[200];
+  char resorig[200];
+  char format[100] = "%9.f%.1f%0.0f";
+  float a = 1.123456789;
+  ck_assert_int_eq(sprintf(res, format, a, a, a), s21_sprintf(resorig, format, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_4
+  char res[200];
+  char resorig[200];
+  char format[100] = "%-19.f%13.1f%0.10f";
+  float a = -1.17783456789;
+  ck_assert_int_eq(sprintf(res, format, a, a, a), s21_sprintf(resorig, format, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_5
+  char res[200];
+  char resorig[200];
+  char format[100] = "%-17.f%-.1f%0.f";
+  float a = -198709.1;
+  ck_assert_int_eq(sprintf(res, format, a, a, a), s21_sprintf(resorig, format, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_6
+  char res[200];
+  char resorig[200];
+  char format[100] = "%  f%-1f%0.10f";
+  float a = 99.123456789;
+  ck_assert_int_eq(sprintf(res, format, a, a, a), s21_sprintf(resorig, format, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_7
+  char res[200];
+  char resorig[200];
+  char format[100] = "%-+120.5f%-13f%1.5f";
+  float a = 3451.123456789;
+  ck_assert_int_eq(sprintf(res, format, a, a, a), s21_sprintf(resorig, format, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_8
+  char res[200];
+  char resorig[200];
+  char format[100] = "%*.*f%-5f%1.5f";
+  float a = 3451.123456789;
+  int x = 23;
+  int y = 4;
+  ck_assert_int_eq(sprintf(res, format, x, y, a, a, a), s21_sprintf(resorig, format, x, y, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_9
+  char res[200];
+  char resorig[200];
+  char format[100] = "%*.*f%-1f%.6f";
+  float a = 3451.123456789;
+  int x = 10;
+  int y = 8;
+  ck_assert_int_eq(sprintf(res, format, x, y, a, a, a), s21_sprintf(resorig, format, x, y, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_10
+  char res[200];
+  char resorig[200];
+  char format[100] = "%*.*fHeLLo%-1f%.3f";
+  float a = 99.12301;
+  int x = 58;
+  int y = 6;
+  ck_assert_int_eq(sprintf(res, format, x, y, a, a, a), s21_sprintf(resorig, format, x, y, a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_11
+  char res[200];
+  char resorig[200];
+  char format[100] = "f % #102.f %-#.2f";
+  float a = 99.0000009;
+  float b = 3451;
+  float c = 123456789;
+  ck_assert_int_eq(sprintf(res, format,  a, b, c), s21_sprintf(resorig, format, a, b, c));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_12
+  char res[200];
+  char resorig[200];
+  char format[100] = "%+f % #102.f %- #.f";
+  float a = 99.0000009;
+  float b = -0.00000003451;
+  float c = -123456789.;
+  ck_assert_int_eq(sprintf(res, format,  a, b, c), s21_sprintf(resorig, format, a, b, c));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_13
+  char res[200];
+  char resorig[200];
+  char format[150] = "%%\\wednesday\\%+f % #102.f %%%                #.4f";
+  float a = 999.04990009;
+  float b = -0.46500003451;
+  float c = 123456789.;
+  ck_assert_int_eq(sprintf(res, format,  a, b, c), s21_sprintf(resorig, format, a, b, c));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_14
+  char res[200];
+  char resorig[200];
+  char format[150] = "sorry%13f%43.9f %34.9f i'm";
+  float a = 999.049904509;
+  double b = -457648764536.05678;
+  double c = 2345678978.09000000000000006;
+  ck_assert_int_eq(sprintf(res, format,  a, b, c), s21_sprintf(resorig, format, a, b, c));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_15
+  char res[200];
+  char resorig[200];
+  char format[150] = "00 f %000.*f %0000000.00000002f";
+  int a = 4;
+  double b = -0.89765432109;
+  double c = 2345.8976543210;
+  ck_assert_int_eq(sprintf(res, format,  a, b, c), s21_sprintf(resorig, format, a, b, c));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_16
+  char res[200];
+  char resorig[200];
+  char format[150] = "%#Lf, %.Lf %0Lf %0.*Lf %+35Lf";
+  long double a = 234897562983476.29552345234523452345;
+  int b = 1;
+  ck_assert_int_eq(sprintf(res, format, a, a, a, b, a, a), s21_sprintf(resorig, format, a, a, a, b, a, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_17
+  char res[200];
+  char resorig[200];
+  char format[100] = "one%0.ftwo";
+  float a = 0.123456789;
+  ck_assert_int_eq(sprintf(res, format,  a), s21_sprintf(resorig, format, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_18
+  char res[200];
+  char resorig[200];
+  char format[100] = "one%- #.*ftwo";
+  float a = 0.1;
+  ck_assert_int_eq(sprintf(res, format, 5 , a), s21_sprintf(resorig, format, 5, a));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_19
+  char res[200];
+  char resorig[200];
+  char format[100] = "%+ #.0f%   f";
+  float a = 0;
+  float b = -11.9;
+  ck_assert_int_eq(sprintf(res, format,  a, b), s21_sprintf(resorig, format, a, b));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_20
+  char res[200];
+  char resorig[200];
+  char format[100] = "%00 f %.*f %.0f";
+  float a = 999.0499066009;
+  float   b = 111;
+  float c = 234;
+  int x = 0;
+  ck_assert_int_eq(sprintf(res, format,  a, x, b, c), s21_sprintf(resorig, format,  a, x, b, c));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_f_21
+  char res[200];
+  char resorig[200];
+  char format[100] = "%f";
+  float a = 99.0000009;
+  ck_assert_int_eq(sprintf(res, format,  a), s21_sprintf(resorig, format,  a));
+  ck_assert_str_eq(res, resorig);
+  
+#test s21_sprintf_f_22
+  char res[200];
+  char resorig[200];
+  char format[100] = "%f %.5f %.6f";
+  float a = 9999.999;
+  ck_assert_int_eq(sprintf(res, format,  a, a, a), s21_sprintf(resorig, format,  a, a, a));
+  ck_assert_str_eq(res, resorig);
+  
+#test s21_sprintf_f_23
+  char res[200];
+  char resorig[200];
+  char format[100] = "%f %.5f %.6f";
+  float a = 0.99999;
+  ck_assert_int_eq(sprintf(res, format,  a, a, a), s21_sprintf(resorig, format,  a, a, a));
+  ck_assert_str_eq(res, resorig);

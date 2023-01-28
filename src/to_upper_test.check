@@ -1,0 +1,8 @@
+#suite to_upper_test
+
+#test to_upper_test_1
+  char work_string[BUFFSIZE] = "!What the mind of man can comprehend and believe he is capable of achieving";
+  char *src = s21_to_upper(work_string);
+  char work_string1[BUFFSIZE] = "!WHAT THE MIND OF MAN CAN COMPREHEND AND BELIEVE HE IS CAPABLE OF ACHIEVING";
+  ck_assert_str_eq(work_string1, src);
+  if(src) free(src);

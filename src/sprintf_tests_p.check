@@ -1,0 +1,101 @@
+#suite s21_sprintf_tests_p
+
+#test test_p1
+  char a[300];
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%p", a), sprintf(resorig, "%p", a));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p2
+  char a[300];
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%%+ %p", a), sprintf(resorig, "%%+ %p", a));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p3
+  char a[300];
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%%0 %p", a), sprintf(resorig, "%%0 %p", a));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p4
+  char a[300];
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "*.* %p", a), sprintf(resorig, "*.* %p", a));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p5
+  char a[300];
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%p", &a[1]), sprintf(resorig, "%p", &a[1]));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p6
+  char a[300];
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%p", &a[1 + 1]), sprintf(resorig, "%p", &a[1 + 1]));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p7
+  int b = 100;
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%p", &b), sprintf(resorig, "%p", &b));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p8
+  int b = 100;
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%%p %% %p", &b), sprintf(resorig, "%%p %% %p", &b));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p9
+  int b = 100;
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%-100p", &b), sprintf(resorig, "%-100p", &b));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p10
+  int b = 100;
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%*p", 50, &b), sprintf(resorig, "%*p", 50, &b));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p11
+  int b = 100;
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%100p", &b), sprintf(resorig, "%100p", &b));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p12
+  char a[300];
+  int b = 100;
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%10p %20p %30p", a, &b, a + sizeof(char)), sprintf(resorig, "%10p %20p %30p", a, &b, a + sizeof(char)));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p13
+  char a[300] = {'\0'};
+  int b = 100;
+  char res[300] = {'\0'};
+  char resorig[300] = {'\0'};
+  ck_assert_int_eq(s21_sprintf(res, "%10p %*p %s", a, 17, &b, a), sprintf(resorig, "%10p %*p %s", a, 17, &b, a));
+  ck_assert_str_eq(res, resorig);
+
+#test test_p14
+  char *g = NULL;
+  char res[300];
+  char resorig[300];
+  ck_assert_int_eq(s21_sprintf(res, "%*p", 17, g), sprintf(resorig, "%*p", 17, g));
+  ck_assert_str_eq(res, resorig);

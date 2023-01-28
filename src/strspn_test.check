@@ -1,0 +1,4 @@
+#suite strspn_test
+
+#test strspn_test_1
+  ck_assert_uint_eq(strspn("this string from example", "shti rng"), s21_strspn("this string from example", "shti rng"));

@@ -1,0 +1,141 @@
+#suite sprintf_test_c
+
+#test s21_sprintf_c_1
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%c", '!'), s21_sprintf(resorig, "%c", '!'));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_2
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%7c %-12c %9c %-90c %13c %45c %1c", 32, 126, 87, 42, 35, 43, 254347), s21_sprintf(resorig, "%7c %-12c %9c %-90c %13c %45c %1c", 32, 126, 87, 42, 35, 43, 254347));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_3
+  unsigned a = 25;    
+  unsigned b = 127;
+  unsigned c = 2;
+  unsigned d = 3;
+  unsigned e = 4;
+  unsigned f = 5;
+  unsigned g = 6;
+  unsigned h = 16;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[] = "%c %c %c %c %c %c %c %c";
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d, e, f, g, h), s21_sprintf(resorig, format,  a, b, c, d, e, f, g, h));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_4
+  unsigned a = 25;    
+  unsigned b = 127;
+  unsigned c = 2;
+  unsigned d = 3;
+  unsigned e = 4;
+  unsigned f = 5;
+  unsigned g = 6;
+  unsigned h = 16;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[] = "%7c %-12c %9c %-90c %13c %45c %1c %11c";
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d, e, f, g, h), s21_sprintf(resorig, format,  a, b, c, d, e, f, g, h));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_5
+  int a = -127;
+  int b = -1;
+  int c = -19;
+  int d = -900;
+  int e = -300;
+  int f = -47;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[] = "%7c %-12c %9c %-90c %13c %45c";
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d, e, f), s21_sprintf(resorig, format,  a, b, c, d, e, f));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_6
+  int a = 115;
+  int b = 50;
+  int c = 49;
+  int d = 91;
+  int e = 84;
+  int f = 69;
+  int g = 83;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[] = "%c%c%c%c%c%c%c%c";
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d, e, f, g, f), s21_sprintf(resorig, format,  a, b, c, d, e, f, g, f));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_7
+  int a = 1151;
+  int b = 1;
+  int c = 2;
+  int d = 3;
+  int e = 4;
+  int f = 5;
+  int g = 6;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[] = "%c%c%c%c%c%c%c%c";
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d, e, f, g, f), s21_sprintf(resorig, format,  a, b, c, d, e, f, g, f));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_8
+  //char format[] = "%+-c%3.c% 2c%*c%.c%#c%-0c%+011c"; 
+  char format[] = "%+-c%3.c% 2c%*c%#c%-0c%+011c"; 
+  int a = 115;
+  int b = 50;
+  int c = 49;
+  int d = 91;
+  int e = 84;
+  int f = 69;
+  int g = 83;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  //ck_assert_int_eq(sprintf(res, format, a, b, c, d, e, f, g, f), s21_sprintf(resorig, format,  a, b, c, d, e, f, g, f));
+  ck_assert_int_eq(sprintf(res, format, a, b, c,d,e,f,g, f), s21_sprintf(resorig, format,  a, b, c,d,e,f,g, f));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_c_9
+  char format[] = "%%%%%c%%%c% c%%%c%c%%%c%%%0c%%%c";
+  unsigned a = 5;
+  unsigned b = 127;
+  unsigned c = 35;
+  unsigned d = 39;
+  unsigned e = 40;
+  unsigned f = 58;
+  unsigned g = 64;
+  unsigned h = 112;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d, e, f, g, h), s21_sprintf(resorig, format,  a, b, c, d, e, f, g, h));
+  ck_assert_pstr_eq(res, resorig);
+
+
+#test s21_sprintf_c_11
+  char format[] = "%%cs21%c%*c%c%cHaMleT%c";  
+  unsigned a = 126;
+  unsigned b = 127;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, '!', '#', b,  '%',  '*', 32, a), s21_sprintf(resorig, format,   '!', '#', b,  '%',  '*', 32, a));
+  ck_assert_pstr_eq(res, resorig);
+
+#test s21_sprintf_c_12
+  char format[] = "HELLO%111cHamleT!";  
+  unsigned a = 126;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, a), s21_sprintf(resorig, format, a));
+  ck_assert_pstr_eq(res, resorig);
+
+#test s21_sprintf_c_13
+  char format[] = "HELLO%-111cHamleT!%c%s";  
+  unsigned a = 126;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, a, 56, "END_TEST_S21_%C"), s21_sprintf(resorig, format, a, 56, "END_TEST_S21_%C"));
+  ck_assert_pstr_eq(res, resorig);

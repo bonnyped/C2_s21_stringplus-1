@@ -1,0 +1,65 @@
+#suite strncat_test
+
+#test strncat_test_1
+  char t1[100] = "Hello, this is 21 len";
+  char T1[100] = "BOOM"; 
+  char t2[100] = "Hello, this is 21 len";
+  char T2[100] = "BOOM";
+
+  ck_assert_pstr_eq(strncat(t1, T1, 4), s21_strncat(t2, T2, 4));
+
+#test strncat_test_3
+  char t3[100] = "Hello, this is 21 len";
+  char T3[100] = "\0"; 
+  char t4[100] = "Hello, this is 21 len";
+  char T4[100] = "\0";
+
+  ck_assert_pstr_eq(strncat(t3, T3, 1), s21_strncat(t4, T4, 1));
+
+#test strncat_test_5
+  char t5[100] = "Hel\0lo, this is 21 len";
+  char T5[100] = "BOOM"; 
+  char t6[100] = "Hel\0lo, this is 21 len";
+  char T6[100] = "BOOM";
+
+  ck_assert_pstr_eq(strncat(t5, T5, 1), s21_strncat(t6, T6, 1));
+
+#test strncat_test_7
+  char t7[100] = "Hello, this is 21 len";
+  char T7[100] = "BOOM"; 
+  char t8[100] = "Hello, this is 21 len";
+  char T8[100] = "BOOM";
+
+  ck_assert_pstr_eq(strncat(t7, T7, 0), s21_strncat(t8, T8, 0));
+
+#test strncat_test_9
+  char t9[100] = "\0";
+  char T9[100] = "BOOM"; 
+  char t10[100] = "\0";
+  char T10[100] = "BOOM";
+
+  ck_assert_pstr_eq(strncat(t9, T9, 2), s21_strncat(t10, T10, 2));
+
+#test strncat_test_11
+  char t11[100] = "\0";
+  char T11[100] = "\0"; 
+  char t12[100] = "\0";
+  char T12[100] = "\0";
+
+  ck_assert_pstr_eq(strncat(t11, T11, 0), s21_strncat(t12, T12, 0));
+
+#test strncat_test_13
+  char t13[100] = "\0";
+  char T13[100] = "\0"; 
+  char t14[100] = "\0";
+  char T14[100] = "\0";
+
+  ck_assert_pstr_eq(strncat(t13, T13, 10), s21_strncat(t14, T14, 10));
+
+#test strncat_test_15
+  char t15[100] = "Hello, this is 21 len";
+  char T15[100] = "BOOM"; 
+  char t16[100] = "Hello, this is 21 len";
+  char T16[100] = "BOOM";
+
+  ck_assert_pstr_eq(strncat(t15, T15, 30), s21_strncat(t16, T16, 30));

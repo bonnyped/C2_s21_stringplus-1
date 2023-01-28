@@ -1,0 +1,244 @@
+#suite sprintf_test_i
+
+#test s21_sprintf_i_1
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%i%i%i%i";
+  int a = INT_MIN;
+  int b = 0;
+  int c = INT_MAX;
+  int d = UINT_MAX;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_1
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%10i%10i%10i%10i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '~';
+  short int d = SHRT_MIN ;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_2
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%0i%0i%0i%0i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '~';
+  short int d = SHRT_MIN ;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_3
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%0.i%0.i%0.i%0.i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '~';
+  short int d = SHRT_MIN ;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_4
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "% i% i% i% i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '~';
+  short int d = SHRT_MIN ;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_5
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%-i%-i%-i%-i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '~';
+  short int d = SHRT_MIN ;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_6
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%+i%+i%+i%+i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '~';
+  short int d = SHRT_MIN ;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_7
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%-10i%+10i%-0i%+0i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '~';
+  short int d = SHRT_MIN ;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_8
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%.i%.i%.i%.i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = '\n';
+  short int d = 34;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_2_10  
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%#i%#i%#i%#i";
+  unsigned int a = INT_MIN;
+  long int b = 0;
+  char c = 'H';
+  short int d = 34;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_3_1
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%i%d%i%23.3f";
+  unsigned int a = INT_MAX;
+  int b = 1234567;
+  int c = 'f';
+  float d = 34.45647;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_3_2
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  char format[100] = "%++i%d%--i%45.0f";
+  unsigned int a = INT_MAX;
+  int b = 1234567;
+  int c = 'f';
+  float d = 34.45647;
+  ck_assert_int_eq(sprintf(res, format, a, b, c, d), s21_sprintf(resorig, format, a, b, c, d));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_4
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%+i", 2147483647), s21_sprintf(resorig, "%+i", 2147483647));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_5
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%-20i", -2147483647), s21_sprintf(resorig, "%-20i", -2147483647));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_6
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%20i", -2147483647), s21_sprintf(resorig, "%20i", -2147483647));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_7
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "% i", 2147483647), s21_sprintf(resorig, "% i", 2147483647));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_8
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%015i", 2147483647), s21_sprintf(resorig, "%015i", 2147483647));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_9
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%-+20i", 2147483647), s21_sprintf(resorig, "%-+20i", 2147483647));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_10
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%+-20i", 2147483647), s21_sprintf(resorig, "%+-20i", 2147483647));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_11
+  char format[] = "%- d |%- 15i|#|%- .7d| test %- i";
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, -334, -332, 1, 1234567890), s21_sprintf(resorig, format, -334, -332, 1, 1234567890));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_12
+  char *format = "%- i |% 15i|#|%- .7i| test %-i";
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, -334, -332, 1, 1234567890), s21_sprintf(resorig, format, -334, -332, 1, 1234567890));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_13
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%-40li%40li", 4294967295444444444,4294967295678909876), s21_sprintf(resorig, "%-40li%40li", 4294967295444444444, 4294967295678909876));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_14
+  char format[] = "%- 1.3i% -1.4i% -1.5i%- 1.6i% -1.7i% -6.8i% -1.9i";
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, 'H', 'a', 'm', 'l', 'e', 't', '!'), s21_sprintf(resorig, format, 'H', 'a', 'm', 'l', 'e', 't', '!'));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_15
+  char format[] = "%0.0i%0i%0i%0i%0i%0i%0i%.*i";
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, format, '\0', '\n', '\t', '1', '9', '*', '#', 1, 1990), s21_sprintf(resorig, format, '\0', '\n', '\t', '1', '9', '*', '#', 1, 1990));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_16
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%-*i%*i", 27, 1, 27, 1), s21_sprintf(resorig, "%-*i%*i", 27, 1, 27, 1));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_17
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%%%i%%%%%22.*i", 1, 27, 1), s21_sprintf(resorig, "%%%i%%%%%22.*i", 1, 27, 1));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_hi_18
+  short i = 11;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%+hi%20hi%+-15.5hi", i, i, i), s21_sprintf(resorig, "%+hd%20hd%+-15.5hi", i, i, i));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_19
+  short i = 11;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%hi%s%li%s%i", i, "short", 271219902712,"LONG", 1990), s21_sprintf(resorig, "%hi%s%li%s%i", i, "short", 271219902712, "LONG", 1990));
+  ck_assert_str_eq(res, resorig);
+
+#test s21_sprintf_i_20
+  short a = 11;
+  long b = 12345678901;
+  int c = 0x77;
+  char res[200] = "\0";
+  char resorig[200] = "\0";
+  ck_assert_int_eq(sprintf(res, "%hi%s%li%s%i", a, "short", b, "LONG", c), s21_sprintf(resorig, "%hi%s%li%s%i", a, "short", b, "LONG", c));
+  ck_assert_str_eq(res, resorig);

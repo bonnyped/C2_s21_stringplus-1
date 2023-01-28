@@ -1,0 +1,49 @@
+#suite memset_test
+
+#test memset_test_1
+  char t1[] = "HELLO, WORLD!";
+  char T1[] = "HELLO, WORLD!";
+  int c1 = 'O';
+  ck_assert_pstr_eq(memset(t1, c1, 10), s21_memset(T1, c1, 10));
+
+#test memset_test_2
+  char t1[] = "HELLO, WORLD!";
+  char T1[] = "HELLO, WORLD!";
+  int c2 = 'o';
+  ck_assert_pstr_eq(memset(t1, c2, 10), s21_memset(T1, c2, 10));
+
+#test memset_test_3
+  char t1[] = "HELLO, WORLD!";
+  char T1[] = "HELLO, WORLD!";
+  int c3 = 'O';
+  ck_assert_pstr_eq(memset(t1, c3, 2), s21_memset(T1, c3, 2));
+
+#test memset_test_4
+  char t1[] = "HELLO, WORLD!";
+  char T1[] = "HELLO, WORLD!";
+  int c4 = 'O';
+  ck_assert_pstr_eq(memset(t1, c4, 3), s21_memset(T1, c4, 3));
+
+#test memset_test_5
+  char t1[] = "HELLO, WORLD!";
+  char T1[] = "HELLO, WORLD!";
+  int c5 = 'o';
+  ck_assert_pstr_eq(memset(t1, c5, 3), s21_memset(T1, c5, 3));
+
+#test memset_test_6
+  char t1[] = "HELLO, WORLD!";
+  char T1[] = "HELLO, WORLD!";
+  int c6 = 'H';
+  ck_assert_pstr_eq(memset(t1, c6, 2), s21_memset(T1, c6, 2));
+
+#test memset_test_7
+  char t1[] = "HELLO, WORLD!";
+  char T1[] = "HELLO, WORLD!";
+  int c7 = 'H';
+  ck_assert_pstr_eq(memset(t1, c7, 1), s21_memset(T1, c7, 1));
+
+#test memset_test_8
+  char t1[] = "H\0ELLO, WORLD!";
+  char T1[] = "H\0ELLO, WORLD!";
+  int c8 = 'h';
+  ck_assert_pstr_eq(memset(t1, c8, 1), s21_memset(T1, c8, 1));

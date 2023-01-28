@@ -1,0 +1,161 @@
+#suite s21_sprintf_tests_g_G_
+
+#test test_g_G_1
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+G %.*g\n", c, 3, c), sprintf(resorig, "%#+G %.*g\n", c, 3, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_2
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+*.*G % *.*g\n", 3, 3, c, 3, 3, c), sprintf(resorig, "%#+*.*G % *.*g\n", 3, 3, c, 3, 3, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_3
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%g %+G\n", a, c), sprintf(resorig, "%g %+G\n", a, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_4
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%+g %+G\n", a, c), sprintf(resorig, "%+g %+G\n", a, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_5
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%+16g %+*G\n", a, 20, c), sprintf(resorig, "%+16g %+*G\n", a, 20, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_6
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%+2g %+*G\n", a, 3, c), sprintf(resorig, "%+2g %+*G\n", a, 3, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_7
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%-+16g %-+*G\n", a, 20, c), sprintf(resorig, "%-+16g %-+*G\n", a, 20, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_8
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#-+16g %#-+*G\n", a, 20, c), sprintf(resorig, "%#-+16g %#-+*G\n", a, 20, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_9
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+016g %#+0*G\n", a, 20, c), sprintf(resorig, "%#+016g %#+0*G\n", a, 20, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_10
+double a = 1344527.434;
+double c = 0.0389849885794308485;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+016g %#0*G\n", a, 20, c), sprintf(resorig, "%#+016g %#0*G\n", a, 20, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_11
+double c = 0.0389849885794308485;
+double z = -77743254.32343;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+016g %#0*G\n", z, 20, c), sprintf(resorig, "%#+016g %#0*G\n", z, 20, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_12
+double c = 0.0389849885794308485;
+double z = -77743254.32343;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+016e %#0*E\n", z, 20, c), sprintf(resorig, "%#+016e %#0*E\n", z, 20, c));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_13
+double w = 23.343;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+.0e %#.*g\n", w, 0, w), sprintf(resorig, "%#+.0e %#.*g\n", w, 0, w));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_14
+double w = 23.343;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+.0G %#.*E\n", w, 0, w), sprintf(resorig, "%#+.0G %#.*E\n", w, 0, w));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_15
+double y = 0.0;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+.0G %.*g\n", y, 0, y), sprintf(resorig, "%#+.0G %.*g\n", y, 0, y));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_16
+double y = 0.0;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+G %g\n", y, y), sprintf(resorig, "%#+G %g\n", y, y));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_17
+double y = 0.0;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+.G %g\n", y, y), sprintf(resorig, "%#+.G %g\n", y, y));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_18
+long double l = -123239120.123123;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+-Lg %LG\n", l, l), sprintf(resorig, "%#+-Lg %LG\n", l, l));
+ck_assert_pstr_eq(res, resorig);
+
+#test test_g_G_19
+long double l = -123239120.123123;
+char res[300];
+char resorig[300];
+ck_assert_int_eq(s21_sprintf(res, "%#+-Lg %LG\n", l, l), sprintf(resorig, "%#+-Lg %LG\n", l, l));
+ck_assert_pstr_eq(res, resorig);
+
+#test s21_sprintf_E_20
+  char res[200];
+  char resorig[200];
+  char format[100] = "%g %.5g %.6g";
+  float a = 9999.999;
+  ck_assert_int_eq(sprintf(res, format,  a, a, a), s21_sprintf(resorig, format,  a, a, a));
+  ck_assert_str_eq(res, resorig);
+
+  
+#test s21_sprintf_E_21
+  char res[200];
+  char resorig[200];
+  char format[100] = "%g %.5g %.6g";
+  float a = 0.99999;
+  ck_assert_int_eq(sprintf(res, format,  a, a, a), s21_sprintf(resorig, format,  a, a, a));
+  ck_assert_str_eq(res, resorig);

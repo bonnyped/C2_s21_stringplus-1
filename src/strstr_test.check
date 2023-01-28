@@ -1,0 +1,90 @@
+#suite strstr_test
+
+#test strstr_0
+  ck_assert_ptr_eq(strstr("What the mind of man can comprehend and believe he is capable of achieving", "hat th"), s21_strstr("What the mind of man can comprehend and believe he is capable of achieving", "hat th"));
+
+#test strstr_00
+  ck_assert_ptr_eq(strstr("What the mind of man can comprehend and believe he is capable of achieving", "123"), s21_strstr("What the mind of man can comprehend and believe he is capable of achieving", "123"));
+
+#test strstr_000
+  char work_string[BUFFSIZE] = "/,,";
+
+  ck_assert_ptr_eq(strstr(work_string, ","), s21_strstr(work_string, ","));
+
+#test strstr_1
+  char s1[] = "Hello, world!";
+  char s2[] = "Hello, world!";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_2
+  char s1[] = "Hello, world!";
+  char s2[] = "Hello, P!";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_3
+  char s1[] = "Hello, world!";
+  char s2[] = "!";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_4
+  char s1[] =
+      "Hello, world!Hello, world!Hello, world!Hello, world!Hello, world!";
+  char s2[] = "world";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_5
+  char s1[] = "";
+  char s2[] = "";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_6
+  char s1[] = "Hello, world!";
+  char s2[] = "";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_7
+  char s1[] = "";
+  char s2[] = "Hello, P!";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_8
+  char s1[] = "69917020";
+  char s2[] = "0";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_9
+  char s1[] = "69917020";
+  char s2[] = "\0";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_10
+  char s1[] = "69917020";
+  char s2[] = "32859160 8v3489-74 tvc4y8719c n4[nqymu uv 4vm9cw";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_11
+  char s1[] = "1   345 345 345 345 345";
+  char s2[] = "345";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_12
+  char s1[] = "sususususpicioussusususpicious";
+  char s2[] = "susp";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));
+
+
+#test strstr_13
+  char s1[] = "sus";
+  char s2[] = "suspi";
+  ck_assert_pstr_eq(strstr(s1, s2), s21_strstr(s1, s2));

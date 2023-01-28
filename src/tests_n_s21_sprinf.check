@@ -1,0 +1,46 @@
+#suite sprintf_test_n
+
+#test s_21_sprintf_n_1
+  char res[200];
+  char resorig[200];
+  char *format = "Hello %dHam%nlet ";
+  int num = 12;
+  int a = 0;
+  int b = 0;
+  ck_assert_int_eq(sprintf(res, format,  num,  &a), s21_sprintf(resorig, format,  num,  &b));
+  ck_assert_str_eq(res, resorig);
+  ck_assert_int_eq(a, b);
+
+#test s_21_sprintf_n_2
+  char res[200];
+  char resorig[200];
+  char *format = "Hello %dHamlet %s%n";
+  int num = 12;
+  int a = 0;
+  int b = 0;
+  char* str = "To be, or not to be, that is the question…";
+  ck_assert_int_eq(sprintf(res, format, num, str, &a), s21_sprintf(resorig, format, num, str, &b));
+  ck_assert_str_eq(res, resorig);
+  ck_assert_int_eq(a, b);
+
+#test s_21_sprintf_n_3
+  char res[200];
+  char resorig[200];
+  char *format = "%0d%nHello Hamlet ";
+  int num = 0;
+  int a = 0;
+  int b = 0;
+  ck_assert_int_eq(sprintf(res, format,  num,  &a), s21_sprintf(resorig, format, num, &b));
+  ck_assert_str_eq(res, resorig);
+  ck_assert_int_eq(a, b);
+
+#test s_21_sprintf_n_4
+  char res[200];
+  char resorig[200];
+  char *format = "%s%nHello0 Hamlet ";
+   int a = 0;
+   int b = 0;
+  char* str = "";
+  ck_assert_int_eq(sprintf(res, format, str, &a), s21_sprintf(resorig, format, str, &b));
+  ck_assert_str_eq(res, resorig);
+  ck_assert_int_eq(a, b);

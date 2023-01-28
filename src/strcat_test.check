@@ -1,0 +1,33 @@
+#suite strcat_test
+
+#test strcat_test_1
+  char t1[100] = "Hello, this is 21 len";
+  char T1[100] = "BOOM"; 
+  char t2[100] = "Hello, this is 21 len";
+  char T2[100] = "BOOM";
+
+  ck_assert_pstr_eq(strcat(t1, T1), s21_strcat(t2, T2));
+
+#test strcat_test_3
+  char t3[100] = "Hello, this is 21 len";
+  char T3[100] = "\0"; 
+  char t4[100] = "Hello, this is 21 len";
+  char T4[100] = "\0";
+
+  ck_assert_pstr_eq(strcat(t3, T3), s21_strcat(t4, T4));
+
+#test strcat_test_5
+  char t5[100] = "Hel\0lo, this is 21 len";
+  char T5[100] = "BOOM"; 
+  char t6[100] = "Hel\0lo, this is 21 len";
+  char T6[100] = "BOOM";
+
+  ck_assert_pstr_eq(strcat(t5, T5), s21_strcat(t6, T6));
+
+#test strcat_test_7
+  char t7[100] = "\0";
+  char T7[100] = "\0"; 
+  char t8[100] = "\0";
+  char T8[100] = "\0";
+
+  ck_assert_pstr_eq(strcat(t7, T7), s21_strcat(t8, T8));

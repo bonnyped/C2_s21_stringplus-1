@@ -1,0 +1,53 @@
+#suite strrchr_test
+
+#test strrchr_0
+  char work_string[100] = "What the mind of man can comprehend and believe he is capable of achieving";
+
+  ck_assert_ptr_eq(strrchr(work_string, 97), s21_strrchr(work_string, 97));
+
+#test strrchr_1
+  char s[] = "Hello, world!";
+  int ch = 'h';
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));
+
+
+#test strrchr_2
+  char s[] = "Hello, world!";
+  int ch = '\0';
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));
+
+
+#test strrchr_3
+  char s[] = "Hello, world!";
+  int ch = ',';
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));
+
+
+#test strrchr_4
+  char s[] = "Hello, world!";
+  int ch = 33;
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));
+
+
+#test strrchr_5
+  char s[] = "Hello, Polina!";
+  int ch = 'P';
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));
+
+
+#test strrchr_6
+  char s[] = "Hello, world!";
+  int ch = 'w';
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));
+
+
+#test strrchr_7
+  char s[] = "Hello, world!";
+  int ch = '0';
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));
+
+
+#test strrchr_8
+  char s[] = "Hello, world!";
+  int ch = 'm';
+  ck_assert_pstr_eq(strrchr(s, ch), s21_strrchr(s, ch));

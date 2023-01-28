@@ -1,0 +1,8 @@
+#suite strerror_test
+
+#test strerror_test_1
+  ck_assert_str_eq(strerror(100), s21_strerror(100));
+
+  for (int i = -300; i < 301; i++) {
+    ck_assert_str_eq(strerror(i), s21_strerror(i));
+  }

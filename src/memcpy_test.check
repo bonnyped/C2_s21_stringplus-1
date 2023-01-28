@@ -1,0 +1,31 @@
+#suite memcpy_test
+
+#test memcpy_test_1
+  const char* t1 = "string_test num 1";
+  char q1[100] = {'\0'};
+  char Q1[100] = {'\0'};
+  ck_assert_str_eq(memcpy(q1, t1, 10), s21_memcpy(Q1, t1, 10));
+
+#test memcpy_test_2
+  const char* t2 = "str\0ing_test num 2";
+  char q2[100] = {'\0'};
+  char Q2[100] = {'\0'};
+  ck_assert_str_eq(memcpy(q2, t2, 10), s21_memcpy(Q2, t2, 10));
+
+#test memcpy_test_3
+  const char* t3 = "str\0ing_test num 3";
+  char q3[100] = "STR\0ING_TEST NUM 3";
+  char Q3[100] = "STR\0ING_TEST NUM 3";
+  ck_assert_str_eq(memcpy(q3 + 2, t3, 5), s21_memcpy(Q3 + 2, t3, 5));
+
+#test memcpy_test_4
+  const char* t4 = "str\0ing_test num 4";
+  char q4[100] = "STRING_TEST NUM 4";
+  char Q4[100] = "STRING_TEST NUM 4";
+  ck_assert_str_eq(memcpy(q4 + 2, t4, 5), s21_memcpy(Q4 + 2, t4, 5));
+
+#test memcpy_test_5
+  const char* t5 = "string_test num 5";
+  char q5[100] = "STRING_TEST NUM 5";
+  char Q5[100] = "STRING_TEST NUM 5";
+  ck_assert_str_eq(memcpy(q5 + 2, t5, 5), s21_memcpy(Q5 + 2, t5, 5));

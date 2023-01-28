@@ -1,0 +1,43 @@
+#suite strncpy_test
+
+#test strncpy_test_1
+  char src[100] = "Hello Hamlet";
+  char dest[100] = "";
+ 
+  ck_assert_str_eq(strncpy(dest, src, 1), s21_strncpy(dest, src, 1));
+
+#test strncpy_test_2
+  char src2[100] = "Hello Hamlet";
+  char dest2[100] = "\0rop\0";
+
+  ck_assert_str_eq(strncpy(dest2, src2, 1), s21_strncpy(dest2, src2, 1));
+
+#test strncpy_test_3
+  const char* t1 = "string_test num 1";
+  char q1[100] = {'\0'};
+  char Q1[100] = {'\0'};
+  ck_assert_str_eq(strncpy(q1, t1, 10), s21_strncpy(Q1, t1, 10));
+
+#test strncpy_test_4
+  const char* t2 = "str\0ing_test num 2";
+  char q2[100] = {'\0'};
+  char Q2[100] = {'\0'};
+  ck_assert_str_eq(strncpy(q2, t2, 10), s21_strncpy(Q2, t2, 10));
+
+#test strncpy_test_5
+  const char* t3 = "str\0ing_test num 3";
+  char q3[100] = "STR\0ING_TEST NUM 3";
+  char Q3[100] = "STR\0ING_TEST NUM 3";
+  ck_assert_str_eq(strncpy(q3 + 2, t3, 5), s21_strncpy(Q3 + 2, t3, 5));
+
+#test strncpy_test_6
+  const char* t4 = "str\0ing_test num 4";
+  char q4[100] = "STRING_TEST NUM 4";
+  char Q4[100] = "STRING_TEST NUM 4";
+  ck_assert_str_eq(strncpy(q4 + 2, t4, 5), s21_strncpy(Q4 + 2, t4, 5));
+
+#test strncpy_test_7
+  const char* t5 = "string_test num 5";
+  char q5[100] = "STRING_TEST NUM 5";
+  char Q5[100] = "STRING_TEST NUM 5";
+  ck_assert_str_eq(strncpy(q5 + 2, t5, 5), s21_strncpy(Q5 + 2, t5, 5));
