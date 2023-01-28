@@ -169,7 +169,7 @@ void print_hexadecimal(long unsigned int number, int precision, int width,
                        int space, int prefix, int in_upper_case, int pointer,
                        char* dst) {
   int num_width = precision > width ? precision : width;
-  char* tmp = malloc(sizeof(char) * (40 + num_width));
+  char* tmp = malloc(sizeof(char) * (50 + num_width));
   if (tmp != s21_NULL) {
     tmp[0] = 0;
     if (pointer && number == 0) {
