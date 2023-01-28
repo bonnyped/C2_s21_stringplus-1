@@ -64,7 +64,7 @@ void print_int(void* number, int precision, int width, int right_padding,
   char* array = s21_NULL;
   int printing_len = precision > (int)array_len ? precision : (int)array_len;
   if (precision != 0 || (precision == 0 && !is_zero(number, type))) {
-    array = malloc(sizeof(char) * (array_len+2));
+    array = malloc(sizeof(char) * (array_len + 2));
   } else {
     printing_len = (plus_sgn || space_symbol);
     if (pading_symbol == '0') {
@@ -346,7 +346,8 @@ void print_double(long double num, int precision, int width, int right_padding,
     if (whole_part > 0) {
       whole_len = log10l(whole_part) + 1;
       if (whole_len < 0) {
-      whole_len = 20;}
+        whole_len = 20;
+      }
     } else {
       whole_len = 1;
     }
