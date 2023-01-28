@@ -334,14 +334,14 @@ void print_double(long double num, int precision, int width, int right_padding,
                                         pading_symbol, plus_sgn, space_symbol,
                                         dst)) {
     int number_sgn = 0;
-    int whole_len;
+    int whole_len = 0;
     if (num < 0) {
       number_sgn = -1;
       num = -num;
     }
     long int power = 0;
     num = round_double(num, &power, precision);
-    long double whole_part;
+    long double whole_part = 0;
     long double fract_part = modfl(num, &whole_part);
     if (whole_part > 0) {
       whole_len = log10l(whole_part) + 1;
@@ -349,7 +349,7 @@ void print_double(long double num, int precision, int width, int right_padding,
     } else {
       whole_len = 1;
     }
-    char* tmp = malloc(sizeof(char) * (precision + 3 + whole_len));
+    char* tmp = malloc(sizeof(char) * (precision + 30 + whole_len));
     int printed_len = precision + whole_len + (precision > 0 || point_forced) +
                       (plus_sgn || space_symbol || number_sgn == -1);
     if (pading_symbol == '0') {
