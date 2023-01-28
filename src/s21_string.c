@@ -2,6 +2,10 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
+char *forward_search(const char *src, const char *trim_chars, s21_size_t length_src, s21_size_t length_trim_chars);
+char *rear_search(const char *src, const char *trim_chars, s21_size_t length_src, s21_size_t length_trim_chars);
+
+
 void *s21_memchr(const void *str, int c, s21_size_t n) {
   const char *str_copy = str;
   void *res = (void *)str;
@@ -459,49 +463,67 @@ void *s21_insert(const char *src, const char *str,
   return srcstr;
 }
 
-void *s21_trim(const char *src, const char *trim_chars) {
-  char *str = s21_NULL;
-  if (src && trim_chars) {
-    s21_size_t length_src = s21_strlen(src);
-    s21_size_t length_trim_chars = s21_strlen(trim_chars);
-    if (length_trim_chars > 0) {
-      s21_size_t start_index_trimed_buffer = 0;
-      char *trimed_buffer = calloc(length_src + 1, sizeof(char));
-      for (s21_size_t i = 0; i < length_src; i++) {
-        for (s21_size_t j = 0; j < length_trim_chars; j++) {
-          if (src[i] == trim_chars[j]) {
-            j = length_trim_chars;
-            trimed_buffer[start_index_trimed_buffer] = trim_chars[j];
-          }
-          if (j == length_trim_chars - 1 && src[i] != trim_chars[j]) {
-            trimed_buffer[start_index_trimed_buffer] = src[i];
-            start_index_trimed_buffer++;
-          }
+void *s21_trim(const char *src, const char *trim_chars){
+    char *str = s21_NULL;
+    char *start = s21_NULL;
+    char *end = s21_NULL;
+    if(src && trim_chars){
+        s21_size_t length_src = s21_strlen(src);
+        s21_size_t length_trim_chars = s21_strlen(trim_chars);
+        char *trimed_buffer = calloc(length_src + 1, sizeof(char));
+        if(length_trim_chars > 0){
+        start = forward_search(src, trim_chars, length_src, length_trim_chars);
+        if(start) end = rear_search(src, trim_chars, length_src, length_trim_chars);
+        if(end) s21_memcpy(trimed_buffer, start, end - start + 1);
+        str = trimed_buffer;
         }
-        if (i == length_src - 1) {
-          start_index_trimed_buffer = 0;
-        }
-      }
-      str = trimed_buffer;
-    } else {
-      s21_size_t length_src = s21_strlen(src);
-      char *trimed_buffer = calloc(length_src + 1, sizeof(char));
-      for (s21_size_t i = 0; i < length_src; i++) {
-        trimed_buffer[i] = src[i];
-      }
-      str = trimed_buffer;
+        
     }
-  }
-  if (src && !trim_chars) {
-    s21_size_t length_src = s21_strlen(src);
-    char *trimed_buffer = calloc(length_src + 1, sizeof(char));
-    for (s21_size_t i = 0; i < length_src; i++) {
-      trimed_buffer[i] = src[i];
-    }
-    str = trimed_buffer;
-  }
+      if(src && (!trim_chars || (trim_chars && s21_strlen(trim_chars) == 0))){
+        char whitespaces[] = " \n\t\x0B\r";
+        s21_size_t length_src = s21_strlen(src);
+        s21_size_t length_whitespaces = s21_strlen(whitespaces);
+        char *trimed_buffer = calloc(length_src + 1, sizeof(char));
+        start = forward_search(src, whitespaces, length_src, length_whitespaces);
+        if(start) end = rear_search(src, whitespaces, length_src, length_whitespaces);
+        if(end) s21_memcpy(trimed_buffer, start, end - start + 1);
+        str = trimed_buffer;
+      }
+    return str;
+}
 
-  return str;
+char *forward_search(const char *src, const char *trim_chars, s21_size_t length_src, s21_size_t length_trim_chars){
+          char *start = s21_NULL;
+          for(s21_size_t i = 0; i < length_src; i++){
+            for(s21_size_t j = 0; j < length_trim_chars; j++){
+                if(src[i] == trim_chars[j]){
+                    j = length_trim_chars;
+                }
+                if((j == length_trim_chars - 1 && src[i] != trim_chars[j])){
+                    start = (char*)&src[i];
+                    j = length_trim_chars;
+                    i = length_src;
+                }
+            }
+            } 
+            return start;
+}
+
+char *rear_search(const char *src, const char *trim_chars, s21_size_t length_src, s21_size_t length_trim_chars){
+    char *end = s21_NULL;
+    for(s21_size_t i = length_src; i > 0; i--){
+            for(s21_size_t j = 0; j < length_trim_chars; j++){
+                if(src[i - 1] == trim_chars[j]){
+                    j = length_trim_chars;
+                }
+                if(j == length_trim_chars - 1 && src[i - 1] != trim_chars[j]){
+                    end = (char*)&src[i - 1];
+                    j = length_trim_chars;
+                    i = 1;
+                }
+            }
+            }
+            return end;
 }
 
 int s21_sprintf(char *dst, const char *format_string, ...) {
